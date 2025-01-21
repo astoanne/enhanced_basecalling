@@ -16,6 +16,8 @@ from app.cigar_utils import extract_cigar_strings
 from app.core import batch_edit_bam
 from app.utils import diff_str, find_floor_index
 
+
+
 def main(test_data_root,read_id,input_path,original_aligned_path,second_aligned_path,output_folder,reference_filepath,edited_path,output_path,edited_filename):
 
 
@@ -451,6 +453,11 @@ def main(test_data_root,read_id,input_path,original_aligned_path,second_aligned_
 
     
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8501))
+
+    # Run the Streamlit app
+    os.system(f"streamlit run app.py --server.port={port} --server.address=0.0.0.0")
+    
     st.title("Improved Basecalling with Breakpoint Detection")
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
 
